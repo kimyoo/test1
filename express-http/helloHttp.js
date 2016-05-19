@@ -54,7 +54,7 @@ app.get('/',function(req,res,next){
 app.get('/',function(req,res,next){
   var context = {};
   //request(baseUrl + credentials.owmKey, function(err, response, body){
-  request("http://api.petfinder.com/shelter.find?location=77062&format=json&key=9a8453291b77fe54f8253684b2c135a6&x&token=3073e442d772677d9db40c5729c6295b", function(err, response, body){ 
+  request("http://api.petfinder.com/shelter.find?location=77062&format=json&key=9a8453291b77fe54f8253684b2c135a6&x", function(err, response, body){ 
     if(!err && response.statusCode < 400){
       context.owm = body;
       res.render('home',context);
