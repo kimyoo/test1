@@ -15,7 +15,9 @@ app.use(express.static('public'));
 
 app.get('/',function(req,res,next){
   var context = {};
-  request(baseUrl + credentials.owmKey, function(err, response, body){
+  //request(baseUrl + credentials.owmKey, function(err, response, body){
+  request("http://api.petfinder.com/shelter.find?location=77062&format=json&key=9a8453291b77fe54f8253684b2c135a6&x&token=f5d04a4a6d41adcf150f7ab57ff26e4e", function(err, response, body){
+
     if(!err && response.statusCode < 400){
       context.owm = body;
       request({
@@ -49,7 +51,8 @@ app.get('/',function(req,res,next){
 
 app.get('/get-ex',function(req,res,next){
   var context = {};
-  request(baseUrl + credentials.owmKey, function(err, response, body){
+  //request(baseUrl + credentials.owmKey, function(err, response, body){
+  request("http://api.petfinder.com/shelter.find?location=77062&format=json&key=9a8453291b77fe54f8253684b2c135a6&x&token=f5d04a4a6d41adcf150f7ab57ff26e4e", function(err, response, body){ 
     if(!err && response.statusCode < 400){
       context.owm = body;
       res.render('home',context);
