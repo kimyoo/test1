@@ -18,16 +18,16 @@ app.get('/',function(req,res,next){
   //request(baseUrl + credentials.owmKey, function(err, response, body){
   request("http://api.petfinder.com/shelter.find?location=77062&format=json&key=9a8453291b77fe54f8253684b2c135a6&x&token=f5d04a4a6d41adcf150f7ab57ff26e4e", function(err, response, body){
 
-    if(!err && response.statusCode < 400){
+/*     if(!err && response.statusCode < 400){
       context.owm = body;
-      request(/* {
+      request( {
         "url":"http://httpbin.org/post",
         "method":"POST",
         "headers":{
           "Content-Type":"application/json"
         },
         "body":'{"foo":"bar","number":1}'
-      }, */ function(err, response, body){
+      }, function(err, response, body){
         if(!err && response.statusCode < 400){
           context.httpbin = body;
           res.render('home',context);
@@ -39,7 +39,7 @@ app.get('/',function(req,res,next){
           next(err);
         }
       });
-    } else {
+    } else */ {
       console.log(err);
       if(response){
         console.log(response.statusCode);
