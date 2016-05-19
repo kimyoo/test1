@@ -5,15 +5,16 @@ var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var credentials = require('./credentials.js');
 var request = require('request');
+var burl = 'http://api.petfinder.com/shelter.find?location=77062&format=json&key=';
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3000);
+//app.set('port', 3000);
 app.use(express.static('public'));
 
 app.get('/',function(req,res,next){
   var context = {};
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+  request(burl + credentials.key + '&token=' +credentials.token, function(err, response, body){
     if(!err && response.statusCode < 400){
       context.owm = body;
       request({
@@ -47,7 +48,7 @@ app.get('/',function(req,res,next){
 
 app.get('/get-ex',function(req,res,next){
   var context = {};
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+  request(burl + credentials.key + '&token=' +credentials.token, function(err, response, body){
     if(!err && response.statusCode < 400){
       context.owm = body;
       res.render('home',context);
