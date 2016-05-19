@@ -5,7 +5,7 @@ var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var credentials = require('./credentials.js');
 var request = require('request');
-var baseUrl = baseUrl;
+var baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=';
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
