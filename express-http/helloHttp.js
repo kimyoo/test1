@@ -5,6 +5,7 @@ var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var credentials = require('./credentials.js');
 var request = require('request');
+var baseUrl = baseUrl;
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -13,7 +14,7 @@ app.use(express.static('public'));
 
 app.get('/',function(req,res,next){
   var context = {};
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+  request(baseUrl + credentials.owmKey, function(err, response, body){
     if(!err && response.statusCode < 400){
       context.owm = body;
       request({
@@ -47,7 +48,7 @@ app.get('/',function(req,res,next){
 
 app.get('/get-ex',function(req,res,next){
   var context = {};
-  request('http://api.openweathermap.org/data/2.5/weather?q=corvallis&APPID=' + credentials.owmKey, function(err, response, body){
+  request(baseUrl + credentials.owmKey, function(err, response, body){
     if(!err && response.statusCode < 400){
       context.owm = body;
       res.render('home',context);
