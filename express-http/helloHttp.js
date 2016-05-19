@@ -32,7 +32,7 @@ app.get('/',function(req,res,next){
       }, function(err, response, body){
         if(!err && response.statusCode < 400){
           context.httpbin = body;
-          res.render('home',context);
+          //res.render('home',context);
         }else{
           console.log(err);
           if(response){
