@@ -1,3 +1,3 @@
 module.exports = {
-	key: '9a8453291b77fe54f8253684b2c135a6'
+	owmKey: 'c7c09b34b1f40f65fad618c71e38a52d'
 }
